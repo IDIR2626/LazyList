@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -44,7 +45,8 @@ class MainActivity : ComponentActivity() {
 fun AppScreen(){
     Column(modifier = Modifier.fillMaxSize()) {
         LazyRow(
-            horizontalArrangement = Arrangement.SpaceAround
+            horizontalArrangement = Arrangement.SpaceAround,
+            state = rememberLazyListState()
         ){
             items(categories){category ->
                 MenuCategory(category)
@@ -55,7 +57,9 @@ fun AppScreen(){
             color = Color.Gray,
             thickness = 1.dp
         )
-        LazyColumn {
+        LazyColumn(
+            state = rememberLazyListState()
+        ) {
             items(dishes){dish ->
                 MenuDish(dish)
             }
@@ -70,7 +74,7 @@ fun AppScreen(){
 //@Preview(showBackground = true)
 fun MenuCategory(category: String) {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = {  },
         colors = ButtonDefaults.buttonColors(Color(0xFFEEE2DE)),
         elevation = ButtonDefaults.buttonElevation(defaultElevation = 4.dp),
         modifier = Modifier.padding(5.dp)
